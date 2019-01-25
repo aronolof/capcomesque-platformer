@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Door
+comment0.text=\r\n\ The\ door\ that\ takes\ the\ player\ to\ the\ next\ level.\ Is\ either\ locked\ or\ open\ depending\ on\ whether\r\n\ there\ is\ a\ key\ on\ the\ screen.\ Only\ the\ graphics\ are\ handled\ in\ this\ class.\r\n\ \r\n\ @author\ Aron\ Strandberg\r\n\ @version\ 2019-01-25\r\n
+comment1.params=
+comment1.target=Door()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Door\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=void\ lockedOrOpen()
+numComments=4

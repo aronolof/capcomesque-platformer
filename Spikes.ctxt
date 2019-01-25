@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Spikes
+comment0.text=\r\n\ The\ only\ enemy\ object\ in\ this\ game.\ Kills\ the\ player\ upon\ contact\r\n\ \r\n\ @author\ Aron\ Strandberg\r\n\ @version\ 2015-08-04\r\n
+comment1.params=type\ rotation
+comment1.target=Spikes(int,\ int)
+comment1.text=\r\n\ These\ enemy\ objects\ are\ either\ fixed\ spikes\ or\ "mines"\ moving\ across\ the\ screen\r\n\ @param\ \ type\ \ determines\ the\ enemy\ type\r\n\ @param\ \ rotation\ determines\ the\ initial\ direction\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ The\ enemies\ move\ straight\ and\ reverse\ direction\ if\ colliding\ with\ a\ platform\r\n
+numComments=3

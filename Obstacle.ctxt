@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Obstacle
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Obstacle\ here.\r\n\ \r\n\ @author\ Aron\ Strandberg\r\n\ @version\ 2015-08-04\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Obstacle\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=graphics
+comment2.target=void\ rescale(greenfoot.GreenfootImage[])
+comment2.text=\r\n\ Doubles\ the\ size\ of\ all\ objects\ in\ the\ game\ from\ 16x16\ to\ 32x32.\ This\ applies\ to\ all\ graphic\ in\ the\ game.\r\n\ Assumes\ that\ all\ sprites\ in\ /images\ are\ 16x16\ pixels\r\n\ \r\n\ @param\ \ graphics\ \ An\ array\ with\ all\ the\ images\ that\ are\ used\ in\ this\ class\r\n
+numComments=3

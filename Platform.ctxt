@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Platform
+comment0.text=\r\n\ Platforms\ are\ the\ objects\ that\ the\ player\ can\ walk\ and\ run\ on.\ If\ they\ are\ invisible\ and\ \!isActive,\r\n\ the\ player\ falls\ through\ them.\r\n\ \r\n\ Only\ the\ active/non-active\ status\ is\ determined\ in\ this\ class.\ All\ other\ interaction\ are\ done\ in\ the\r\n\ player\ class\r\n\ \r\n\ @author\ Aron\ Strandberg\r\n\ @version\ 2019-01-25\r\n
+comment1.params=image
+comment1.target=Platform(int)
+comment1.text=\r\n\ @param\ \ image\ \ integer\ from\ the\ level\ generator\ that\ is\ used\ to\ select\ sprite\r\n
+comment2.params=image\ loopstart\ looprefresh
+comment2.target=Platform(int,\ int,\ int)
+comment2.text=\r\n\ This\ is\ the\ alterantive\ constructor\ for\ platforms\ that\ can\ disappear\r\n\ @param\ \ image\ \ integer\ from\ the\ level\ generator\ that\ is\ used\ to\ select\ sprite\r\n\ @param\ \ loopstart\ \ vary\ this\ number\ to\ allow\ platforms\ to\ be\ timed\ differently\r\n\ @param\ \ looprefresh\ \ Determines\ when\ the\ block\ switches\ from\ solid\ to\ non-solid.\ Larger\ number\ means\ slower\ alternation\r\n
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\r\n\ The\ only\ activity\ of\ the\ platform\ is\ to\ check\ whether\ it\ is\ a\ normal\ dead\ platform\ or\ an\ alternating\ one.\r\n
+comment4.params=
+comment4.target=void\ appearDisappear()
+comment4.text=\r\n\ Alternation\ between\ solid\ and\ non\ solid.\ The\ player\ only\ collides\ with\ platforms\ where\ isActive\ \=\ true.\r\n
+numComments=5

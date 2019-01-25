@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Victory
+comment0.text=\r\n\ The\ concluding\ message\ when\ all\ levels\ have\ been\ completed.\ Shows\ a\ congratulations\ message\ and\ reports\r\n\ the\ number\ of\ deaths.\r\n\ \r\n\ @author\ Aron\ Strandberg\r\n\ @version\ 2019-01-25\r\n
+comment1.params=
+comment1.target=Victory()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Other\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=void\ textAppear()
+comment3.text=\r\n\ The\ text\ is\ drawn\ on\ the\ screen\ with\ a\ series\ of\ steps\r\n
+comment4.params=text
+comment4.target=void\ createString(java.lang.String)
+comment4.text=\r\n\ This\ method\ draws\ the\ congratulations\ text\r\n\ @param\ \ text\ \ is\ extended\ stepwise\ with\ the\ strings\ defined\ at\ the\ beginning\ of\ this\ class\r\n
+numComments=5

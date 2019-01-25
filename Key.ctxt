@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Key
+comment0.text=\r\n\ When\ the\ key\ is\ picked\ up,\ the\ door\ to\ the\ next\ level\ is\ unlocked.\ If\ the\ player\ dies,\ the\ key\ is\ dropped\r\n\ and\ respawns.\r\n\ \r\n\ @author\ Aron\ Strandberg\r\n\ @version\ 2015-08-04\r\n
+comment1.params=
+comment1.target=Key()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Key\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=3

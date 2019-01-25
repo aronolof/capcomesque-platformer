@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Explosion
+comment0.text=\r\n\ These\ objects\ are\ used\ for\ the\ explosion\ animation\ when\ the\ player\ dies.\ It\ is\ also\ used\ in\ reverse\ when\r\n\ spawning.\r\n\ \r\n\ @author\ Aron\ Strandberg\r\n\ @version\ 2015-08-04\r\n
+comment1.params=dir\ type
+comment1.target=Explosion(int,\ int)
+comment1.text=\r\n\ By\ creating\ a\ number\ of\ objects\ with\ different\ directions,\ an\ "explosion"\ is\ generated\ when\ dying.\r\n\ @param\ \ dir\ \ determines\ the\ direction\r\n\ @param\ \ type\ \ to\ be\ used\ in\ later\ developemtn\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Explosion\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=void\ explosion()
+comment3.text=\r\n\ More\ specific\ rules\ for\ the\ explosion\ animation\r\n
+numComments=4

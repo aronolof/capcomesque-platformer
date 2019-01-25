@@ -1,0 +1,247 @@
+import greenfoot.*;
+
+/**
+ * Det finns endast en level-klass, där alla nivåer är samlade. De olika nivåerna genererar istället
+ * via arrayer längst ned.
+ */
+public class Level extends World
+{
+    private boolean allowLevelSkip = true; // Om true så kan nivån hoppas över med "s".
+    
+    public static int numberOfDeaths = 0; // För att visa i slutresultatet
+    
+    public static int spawnX;
+    public static int spawnY;
+    public static int respawnCountdown;
+    
+    public static int whichLevel = 0;
+    public static String[][] currentLevel;
+    
+    //om denna sätts till true så skapas en ny spelare
+    public static boolean playerRespawn = false;
+    
+    // soundtrack
+    public static GreenfootSound currentSong;
+    public static final GreenfootSound[] soundtrack = {
+        new GreenfootSound("stage1.mp3"),
+        new GreenfootSound("stage1.mp3")
+    };
+
+    // ljudeffekter
+    static GreenfootSound respawn = new GreenfootSound("respawn.wav");
+    
+    // grafik
+    public final static GreenfootImage[] graphics = {
+        new GreenfootImage("level_00.png"),
+        new GreenfootImage("level_01.png"),
+        new GreenfootImage("level_02.png"),
+        new GreenfootImage("black.png")
+    };
+    
+    /**
+     * Constructor for objects of class Level.
+     * 
+     */
+    public Level()
+    {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(384, 256, 2);
+        Greenfoot.setSpeed(48);
+        setPaintOrder(Victory.class,Explosion.class,Water.class,Spikes.class,Platform.class,Mover.class);
+        currentSong = soundtrack[0];
+        setSong(0);
+        createMap();
+        
+        
+    }
+    
+    public void act()
+    {
+        checkRespawn(playerRespawn);
+        skipLevel(); //fuskknapp som fungerar om allowLevelSkip är true
+    }
+    
+    public void setSong(int i)
+    {
+        if(currentSong.isPlaying()) currentSong.stop();
+        currentSong = soundtrack[i];
+        soundtrack[i].playLoop();
+        currentSong.setVolume(100);
+    }
+    
+    public void checkRespawn(boolean TF)
+    {
+        if(playerRespawn){
+            respawnCountdown --;
+            if(respawnCountdown <= 0){
+                addObject(new Player(),Level.spawnX,Level.spawnY);
+                playerRespawn = false;
+                respawn.play();
+            }
+        }
+    }
+
+    /**
+    * Fusknapp "s" som fungerar om allowLevelSkip är true. För att testa spelet snabbare.
+    */
+    public void skipLevel(){
+        if ("s".equals(Greenfoot.getKey()) && allowLevelSkip){
+            Level.whichLevel++;Greenfoot.setWorld(new Level());
+            playerRespawn = false;
+        }
+    }
+    
+    /**
+    * Loop som skapar nivåerna utifrån matriserna längst ned. Arrayerna gås igenom bokstav för bokstav och
+    * tillhörande objekt skapas i spelet.
+    */
+    public void createMap()
+    {
+      if(whichLevel > 4) {whichLevel = 0;}
+      if(whichLevel == 0){currentLevel = Level0; setBackground(graphics[0]);}
+      else if(whichLevel == 1){currentLevel = Level1; setBackground(graphics[1]);setSong(0);}
+      else if(whichLevel == 2){currentLevel = Level2; setBackground(graphics[2]);setSong(0);}
+      else if(whichLevel == 3){currentLevel = Level3; setBackground(graphics[2]);setSong(0);}
+      else if(whichLevel == 4){currentLevel = Level4; setBackground(graphics[3]);setSong(0);}
+        
+      for (int j=0; j<16; j = j + 1){  
+          for (int i=0; i<24; i = i + 1){
+              char letter = currentLevel[j][0].charAt(i);
+              if(letter == ' ') continue;
+              if(letter == '9'){ addObject(new Platform(3,0,150),8+(16*i),8+(16*j) ); continue; }
+              if(letter == '8'){ addObject(new Platform(4,75,150),8+(16*i),8+(16*j) ); continue; }
+              if(letter == '7'){ addObject(new Platform(5,150,150),8+(16*i),8+(16*j) ); continue; } 
+              
+              if(letter == '1'){ addObject(new Platform(1),8+(16*i),8+(16*j) ); continue; } //plattform1
+              if(letter == '2'){ addObject(new Platform(2),8+(16*i),8+(16*j) ); continue; } //plattform2
+              
+              if(letter == 'q'){ addObject(new Water(1),8+(16*i),8+(16*j) ); continue; } // vatten1
+              if(letter == 'w'){ addObject(new Water(2),8+(16*i),8+(16*j) ); continue; } // vatten2
+              
+              if(letter == 'p'){
+                  spawnX = 8+(16*i); // Sparar x och y för senare respawn
+                  spawnY = 8+(16*j); // Sparar x och y för senare respawn
+                  addObject(new Player(),spawnX,spawnY);
+                  continue; 
+                } // player
+                
+              if(letter == 'z'){ addObject(new Spikes(1,0),8+(16*i),8+(16*j) ); continue; } //spikes1
+              if(letter == 'x'){ addObject(new Spikes(2,0),8+(16*i),8+(16*j) ); continue; }
+              if(letter == 'c'){ addObject(new Spikes(3,0),8+(16*i),8+(16*j) ); continue; }
+              
+              if(letter == 'v'){ 
+                  addObject(new Water(2),8+(16*i),8+(16*j) );
+                  addObject(new Spikes(1,0),8+(16*i),8+(16*j) );
+                  continue;
+                  }
+              if(letter == 'e'){ 
+                  addObject(new Water(2),8+(16*i),8+(16*j) );
+                  addObject(new Spikes(3,0),8+(16*i),8+(16*j) );
+                  continue;
+                  }
+              if(letter == 'r'){ 
+                  addObject(new Water(2),8+(16*i),8+(16*j) );
+                  addObject(new Spikes(2,0),8+(16*i),8+(16*j) );
+                  continue;
+                  }
+              
+              //När denna skapas så visas resultatet och spelet kan avslutas:
+              if(letter == 'o'){addObject(new Victory(),8+(16*i),8+(16*j) ); continue; }
+              
+              
+          }
+          
+      }
+      
+    }
+    
+    String[][] Level0 = {
+            {"111111111111111111111111"},
+            {"11    11   c           1"},
+            {"11  p 11               1"},
+            {"11111 11111 1z1z1z1z1 11"},
+            {"12111 11121 121212121  1"},
+            {"111    x111 1111111111 1"},
+            {"121    x121   1   1    1"},
+            {"111    x111     1   1 11"},
+            {"121    x121  11111111111"},
+            {"111    x111            1"},
+            {"121zz zz121         9  1"},
+            {"11111 11111111    8    1"},
+            {"qqqqqqqqqqqqqqqqqqqqqqqq"},
+            {"wwwwwwwwwwwwwwwwwwwwwwww"},
+            {"wwwwwwwwwwwwwwwwwwwwwwww"},
+            {"vvvvv1vvvvvvvvvvvvvvvvvv"}};
+    
+    String[][] Level1 = {
+            {"111111111111111111111111"},
+            {"1          1           1"},
+            {"1       p  1           1"},
+            {"1qq111111111111111111qq1"},
+            {"1ww111111111111111111ww1"},
+            {"1wweeewwww1wwwwwwwww1ww1"},
+            {"1wwwwwwwww1wwwwwwwww1ww1"},
+            {"1wwwwwwwww1wwwr1rwww1ww1"},
+            {"1wwwwwwwww1wwww1wwww1ww1"},
+            {"1wwwwwwwww1wwww1wwww1ww1"},
+            {"1wwwwwwwww1rwww1wwwr1ww1"},
+            {"1wwwwwwwwwwwwww1wwwwwww1"},
+            {"1wwwwwwwwwwwwww1wwwwwww1"},
+            {"1wwwwwweee1wwww1wwww1ww1"},
+            {"1vvvvvvvvv1vvvv1vvvv1vv1"},
+            {"111111111111111111111111"}};
+            
+      String[][] Level2 = {
+            {"222222222222222222222222"},
+            {"2  2                  x2"},
+            {"2    2x    2x       2  2"},
+            {"2    2x    2        2  2"},
+            {"2p 2   x   2     x  2  2"},
+            {"222222222222222222222  2"},
+            {"2                      2"},
+            {"2                      2"},
+            {"2                      2"},
+            {"2                      2"},
+            {"2  1             1     2"},
+            {"2            1       1 2"},
+            {"2    1                 2"},
+            {"2        1             2"},
+            {"2zzzzzzzzzzzzzzzzzzzzzz2"},
+            {"222222222222222222222222"}};
+            
+      String[][] Level3 = {
+            {"222222222222222222222222"},
+            {"2                      2"},
+            {"2    9 8 7            82"},
+            {"2    9 8 7         18 82"},
+            {"2  11111111            2"},
+            {"2p                     2"},
+            {"21119879879879879871   2"},
+            {"2                  1   2"},
+            {"2                  1   2"},
+            {"2                  1   2"},
+            {"2                  1   2"},
+            {"2                  1z z2"},
+            {"2                  11 12"},
+            {"2                  1   2"},
+            {"2zzzzzzzzzzzzzzzzzz1   2"},
+            {"222222222222222222222222"}};
+            
+      String[][] Level4 = {
+            {"121212121212121212121212"},
+            {"2                      1"},
+            {"1                      2"},
+            {"2                      1"},
+            {"1                      2"},
+            {"2                      1"},
+            {"1                      2"},
+            {"2                      1"},
+            {"1           o          2"},
+            {"2                      1"},
+            {"1                      2"},
+            {"2                      1"},
+            {"1                      2"},
+            {"2                      1"},
+            {"1                      2"},
+            {"212121212121212121212121"}};
+}
