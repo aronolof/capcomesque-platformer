@@ -8,6 +8,8 @@ The sounds effects have been generated at http://www.bfxr.net/.
 The music is composed in FamiTracker.
 The sprites have been drawn with http://www.piskelapp.com/.
 
-The game can be run in-browser at https://www.greenfoot.org/scenarios/14719.
+The game can be run in-browser at https://www.greenfoot.org/scenarios/14719 (or alternatively, by running the file capcomesque-platformer.jar).
+
+
 
 (c) Aron Strandberg
